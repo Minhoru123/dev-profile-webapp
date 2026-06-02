@@ -86,6 +86,31 @@ code {
   text-transform: lowercase;
 }
 
+.brand-home {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: #ffffff08;
+}
+
+.brand-home:hover,
+.brand-home:focus-visible {
+  background: #ffffff12;
+  border-color: var(--text);
+}
+
+.brand-home svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 1.85;
+  fill: none;
+}
+
 .main-nav {
   display: flex;
   flex-wrap: wrap;
@@ -387,6 +412,11 @@ code {
   display: block;
   text-decoration: none;
   color: inherit;
+}
+
+.card:target {
+  border-color: var(--text);
+  background: var(--surface-hover);
 }
 
 @media (max-width: 900px) {

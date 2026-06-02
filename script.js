@@ -1,5 +1,4 @@
 const siteConfig = {
-  brand: "Minhoru Cotache",
   brandHref: "./index.html",
   navLinks: [
     { label: "Blog", href: "./blog.html" },
@@ -83,7 +82,10 @@ function renderSiteHeader() {
 
   return `
     <header class="site-header">
-      <a class="brand" href="${siteConfig.brandHref}">${siteConfig.brand}</a>
+      <a class="brand brand-home" href="${siteConfig.brandHref}" aria-label="Home">
+        ${iconSVG("home")}
+        <span class="sr-only">Home</span>
+      </a>
       <nav class="main-nav" aria-label="Main navigation">
         ${nav}
       </nav>
@@ -127,7 +129,8 @@ function iconSVG(name) {
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 1 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>',
     x: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l7.2 9.6L4.3 20h3.2l5.2-5.4 4.1 5.4H20l-7.5-9.8L19.1 4h-3.2l-4.8 5-3.8-5z"></path></svg>',
     blog: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>',
-    mail: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="M22 7l-10 7L2 7"></path></svg>'
+    mail: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="M22 7l-10 7L2 7"></path></svg>',
+    home: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>'
   };
 
   return icons[name] || icons.blog;
@@ -231,6 +234,16 @@ function renderBlogList() {
       `
     )
     .join("");
+}
+
+function focusHashTarget() {
+  const hash = window.location.hash.slice(1);
+  if (!hash) return;
+
+  const target = document.getElementById(hash);
+  if (!target) return;
+
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function renderProjects() {
@@ -357,6 +370,7 @@ async function init() {
   renderSpeaking();
   renderArchive();
   renderResearch();
+  focusHashTarget();
   setCurrentYear();
   setupProfileImageFallback();
 }
