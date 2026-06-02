@@ -355,6 +355,15 @@ code {
   font-size: 0.9rem;
 }
 
+.post-body {
+  margin-top: 0.9rem;
+}
+
+.post-body p {
+  margin: 0.75rem 0 0;
+  color: var(--text);
+}
+
 .card-links {
   margin-top: 0.85rem;
   display: flex;

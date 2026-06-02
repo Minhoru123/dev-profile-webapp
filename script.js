@@ -164,6 +164,28 @@ function emptyStateCard(message) {
   `;
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function renderBodyText(body) {
+  if (!body) return "";
+
+  const paragraphs = String(body)
+    .split(/\r?\n\r?\n/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+
+  return paragraphs
+    .map((part) => `<p>${escapeHtml(part).replaceAll(/\r?\n/g, "<br />")}</p>`)
+    .join("");
+}
+
 async function loadJson(path) {
   try {
     const response = await fetch(path, { cache: "no-store" });
@@ -229,6 +251,7 @@ function renderBlogList() {
         <article class="card" id="${post.slug}">
           <h3>${post.title}</h3>
           <p>${post.excerpt}</p>
+          <div class="post-body">${renderBodyText(post.body)}</div>
           <div class="card-meta">${post.date}</div>
         </article>
       `
