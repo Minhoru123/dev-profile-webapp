@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>minhorucotache.dev</title>
+    <meta
+      name="description"
+      content="Personal developer website for Minhoru Cotache."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="background-glow background-glow-left" aria-hidden="true"></div>
+    <div class="background-glow background-glow-right" aria-hidden="true"></div>
+
+    <site-header></site-header>
+
+    <main class="page">
+      <section class="hero" id="home">
+        <div class="avatar" id="profile-avatar">
+          <img
+            src="./assets/profile.jpg"
+            id="profile-image"
+          />
+          <span class="avatar-fallback" aria-hidden="true">MC</span>
+        </div>
+        <h1>Hi, I&apos;m Minhoru Cotache.</h1>
+        <p>
+          I build software, study systems, and document practical lessons from
+          architecture, debugging, and projects.
+        </p>
+        <ul id="social-links" class="social-links" aria-label="Social links"></ul>
+      </section>
+
+      <section class="section-block" aria-labelledby="latest-notes-title">
+        <div class="section-headline">
+          <h2 id="latest-notes-title">Latest Blog Preview</h2>
+          <a class="text-link" href="./blog.html">View all posts</a>
+        </div>
+        <div id="post-preview-list" class="card-list"></div>
+      </section>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

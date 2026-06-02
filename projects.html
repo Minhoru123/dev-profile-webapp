@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | minhorucotache.dev</title>
+    <meta
+      name="description"
+      content="Project portfolio for Minhoru Cotache with links to GitHub repos."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="background-glow background-glow-left" aria-hidden="true"></div>
+    <div class="background-glow background-glow-right" aria-hidden="true"></div>
+
+    <site-header></site-header>
+
+    <main class="page">
+      <section class="page-intro">
+        <h1>Projects</h1>
+        <p>
+          Each project card has a GitHub link slot.
+        </p>
+      </section>
+
+      <section class="section-block" aria-labelledby="project-list-title">
+        <h2 id="project-list-title" class="sr-only">Project List</h2>
+        <div id="project-list" class="card-list"></div>
+      </section>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

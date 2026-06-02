@@ -1,0 +1,54 @@
+[
+  {
+    "title": "How I Think About Architecture Tradeoffs",
+    "date": "2026-04-15",
+    "excerpt": "A practical checklist for choosing between speed, simplicity, and long-term maintainability.",
+    "tags": [
+      "architecture",
+      "engineering",
+      "systems"
+    ],
+    "slug": "architecture-tradeoffs",
+    "status": "published",
+    "body": "Initial draft content for architecture tradeoffs."
+  },
+  {
+    "title": "Shipping Better Features With Smaller PRs",
+    "date": "2026-03-12",
+    "excerpt": "A playbook for reducing merge pain, improving reviews, and keeping release confidence high.",
+    "tags": [
+      "git",
+      "collaboration",
+      "delivery"
+    ],
+    "slug": "smaller-prs",
+    "status": "published",
+    "body": "Initial draft content for shipping better features with smaller pull requests."
+  },
+  {
+    "title": "My Dev Setup for Focused Deep Work",
+    "date": "2026-02-18",
+    "excerpt": "The tools, keyboard flows, and environment rules that keep context switching under control.",
+    "tags": [
+      "workflow",
+      "setup",
+      "productivity"
+    ],
+    "slug": "dev-setup-deep-work",
+    "status": "published",
+    "body": "Initial draft content for deep work development setup."
+  },
+  {
+    "title": "Learning Notes: Better Frontend State Boundaries",
+    "date": "2026-01-07",
+    "excerpt": "A note on component state, URL state, and server state while building side projects.",
+    "tags": [
+      "frontend",
+      "state-management",
+      "learning"
+    ],
+    "slug": "frontend-state-boundaries",
+    "status": "published",
+    "body": "Initial draft content for frontend state boundary learning notes."
+  }
+]

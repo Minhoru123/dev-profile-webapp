@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog | minhorucotache.dev</title>
+    <meta
+      name="description"
+      content="Blog notes and learning posts by Minhoru Cotache."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="background-glow background-glow-left" aria-hidden="true"></div>
+    <div class="background-glow background-glow-right" aria-hidden="true"></div>
+
+    <site-header></site-header>
+
+    <main class="page">
+      <section class="page-intro">
+        <h1>Blog</h1>
+        <p>
+          Learning notes, build logs, and practical write-ups as I progress as
+          a developer.
+        </p>
+      </section>
+
+      <section class="section-block" aria-labelledby="blog-list-title">
+        <h2 id="blog-list-title" class="sr-only">Blog Post List</h2>
+        <div id="blog-post-list" class="card-list"></div>
+      </section>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
