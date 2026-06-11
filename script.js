@@ -66,6 +66,19 @@ const dataPaths = {
   projects: "./data/projects.json"
 };
 
+const articleTypes = {
+  blog: {
+    collection: "blogPosts",
+    label: "Blog",
+    listingHref: "./blog.html"
+  },
+  research: {
+    collection: "researchItems",
+    label: "Research",
+    listingHref: "./research.html"
+  }
+};
+
 function getCurrentPage() {
   return window.location.pathname.split("/").pop() || "index.html";
 }
@@ -186,6 +199,10 @@ function renderBodyText(body) {
     .join("");
 }
 
+function getArticleHref(type, slug) {
+  return `./article.html?type=${encodeURIComponent(type)}&slug=${encodeURIComponent(slug)}`;
+}
+
 async function loadJson(path) {
   try {
     const response = await fetch(path, { cache: "no-store" });
@@ -225,7 +242,7 @@ function renderBlogPreview() {
   previewEl.innerHTML = posts
     .map(
       (post) => `
-        <a class="card card-link" href="./blog.html#${post.slug}">
+        <a class="card card-link" href="${getArticleHref("blog", post.slug)}">
           <h3>${post.title}</h3>
           <p>${post.excerpt}</p>
           <div class="card-meta">${post.date}</div>
@@ -248,25 +265,14 @@ function renderBlogList() {
   blogListEl.innerHTML = posts
     .map(
       (post) => `
-        <article class="card" id="${post.slug}">
+        <a class="card card-link" href="${getArticleHref("blog", post.slug)}">
           <h3>${post.title}</h3>
           <p>${post.excerpt}</p>
-          <div class="post-body">${renderBodyText(post.body)}</div>
           <div class="card-meta">${post.date}</div>
-        </article>
+        </a>
       `
     )
     .join("");
-}
-
-function focusHashTarget() {
-  const hash = window.location.hash.slice(1);
-  if (!hash) return;
-
-  const target = document.getElementById(hash);
-  if (!target) return;
-
-  target.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function renderProjects() {
@@ -347,14 +353,61 @@ function renderResearch() {
   researchListEl.innerHTML = researchItems
     .map(
       (item) => `
-        <article class="card" id="${item.slug}">
+        <a class="card card-link" href="${getArticleHref("research", item.slug)}">
           <h3>${item.title}</h3>
           <p>${item.summary}</p>
           <div class="card-meta">${item.focus} | ${item.date}</div>
-        </article>
+        </a>
       `
     )
     .join("");
+}
+
+function renderArticlePage() {
+  const articleEl = document.getElementById("article-detail");
+  if (!articleEl) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get("type");
+  const slug = params.get("slug");
+
+  if (!type || !slug || !articleTypes[type]) {
+    articleEl.innerHTML = emptyStateCard("Missing or invalid article link.");
+    return;
+  }
+
+  const config = articleTypes[type];
+  const collection = contentState[config.collection];
+  const item = collection.find((entry) => entry.slug === slug);
+
+  if (!item) {
+    articleEl.innerHTML = emptyStateCard(`Could not find that ${config.label.toLowerCase()} article.`);
+    return;
+  }
+
+  const summary = item.excerpt || item.summary || "";
+  const secondaryMeta = item.focus ? `${escapeHtml(item.focus)} | ` : "";
+  const tags = Array.isArray(item.tags) && item.tags.length > 0
+    ? `
+      <div class="pill-row article-tags">
+        ${item.tags.map((tag) => `<span class="pill">${escapeHtml(tag)}</span>`).join("")}
+      </div>
+    `
+    : "";
+
+  articleEl.innerHTML = `
+    <article class="article-detail">
+      <a class="text-link article-back" href="${config.listingHref}">Back to ${config.label}</a>
+      <p class="article-kicker">${config.label}</p>
+      <h1 id="article-title">${escapeHtml(item.title)}</h1>
+      ${summary ? `<p class="article-summary">${escapeHtml(summary)}</p>` : ""}
+      <div class="card-meta">${secondaryMeta}${escapeHtml(item.date || "")}</div>
+      ${tags}
+      <div class="post-body article-body">${renderBodyText(item.body)}</div>
+    </article>
+  `;
+
+  document.title = `${item.title} | minhorucotache.dev`;
 }
 
 function setCurrentYear() {
@@ -393,7 +446,7 @@ async function init() {
   renderSpeaking();
   renderArchive();
   renderResearch();
-  focusHashTarget();
+  renderArticlePage();
   setCurrentYear();
   setupProfileImageFallback();
 }
