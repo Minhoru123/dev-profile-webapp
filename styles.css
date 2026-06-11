@@ -1,17 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap");
 
 :root {
-  --bg: #0b090d;
-  --surface: #100d12;
-  --surface-hover: #15111a;
-  --text: #ece8ee;
-  --muted: #bdb5c2;
+  --bg: #674c47;
+  --surface: #523c38;
+  --surface-hover: #745751;
+  --text: #f3ece9;
+  --muted: #d3c3bd;
   --accent: #ffffff;
   --accent-soft: #ffffff;
-  --border: #ffffff24;
+  --border: #ffffff2e;
   --shadow: none;
   --radius-md: 4px;
-  --container: 980px;
+  --container: 1140px;
   --display-font: "IBM Plex Mono", "JetBrains Mono", Consolas, "Courier New", monospace;
   --sans-font: "IBM Plex Mono", "JetBrains Mono", Consolas, "Courier New", monospace;
   --mono-font: "JetBrains Mono", Consolas, "Courier New", monospace;
@@ -53,7 +53,7 @@ code {
   font-family: var(--mono-font);
   font-size: 0.9em;
   color: var(--text);
-  background: #ffffff0d;
+  background: #ffffff1a;
   border: 1px solid var(--border);
   border-radius: 2px;
   padding: 0.08rem 0.35rem;
@@ -102,12 +102,12 @@ code {
   justify-content: center;
   border: 1px solid var(--border);
   border-radius: 2px;
-  background: #ffffff08;
+  background: #ffffff1a;
 }
 
 .brand-home:hover,
 .brand-home:focus-visible {
-  background: #ffffff12;
+  background: #ffffff26;
   border-color: var(--text);
 }
 
@@ -236,7 +236,7 @@ code {
   height: 44px;
   border-radius: 2px;
   border: 1px solid var(--border);
-  background: #ffffff08;
+  background: #ffffff1a;
   color: var(--text);
   display: inline-flex;
   align-items: center;
@@ -252,7 +252,7 @@ code {
 .social-links a:focus-visible {
   transform: translateY(-2px);
   border-color: var(--text);
-  background: #ffffff12;
+  background: #ffffff26;
   color: var(--text);
 }
 
