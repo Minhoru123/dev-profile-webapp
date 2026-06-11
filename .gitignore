@@ -1,2 +1,3 @@
 # Ignore the content workflow file
 CONTENT_WORKFLOW.md
+.claude/
